@@ -1,0 +1,23 @@
+ID_Ticket,Status,Avaliacao,Comentario
+1001,Concluído,Negativa,A transportadora demorou 15 dias além do prazo. Péssimo!
+1002,Pendente,Positiva,"Ainda não chegou, mas o código de rastreio atualiza rápido."
+1003,Concluído,Negativa,A tela do celular veio com um trincado na ponta direita.
+1004,Concluído,Negativa,Liguei para reclamar e a atendente foi super grossa comigo.
+1005,Cancelado,Negativa,Desisti da compra porque ninguém respondia meus e-mails.
+1006,Concluído,Positiva,"Produto excelente, chegou antes do prazo e muito bem embalado."
+1007,Concluído,Negativa,A caixa estava toda amassada e o manual rasgado por causa da chuva.
+1008,Concluído,Negativa,O lado esquerdo do fone de ouvido parou de funcionar em dois dias.
+1009,Concluído,Negativa,"O robô do chat de vocês não entende nada, impossível falar com humano."
+1010,Concluído,Negativa,O entregador jogou o pacote pelo portão e quebrou o produto.
+1011,Pendente,Negativa,Comprei faz um mês e até agora não emitiram a nota fiscal.
+1012,Concluído,Positiva,"O suporte técnico me ajudou a configurar o sistema em 5 minutos, nota 10!"
+1013,Concluído,Negativa,"A qualidade do material é horrível, na primeira lavagem encolheu tudo."
+1014,Concluído,Negativa,Fiquei 40 minutos na música de espera e a ligação simplesmente caiu.
+1015,Concluído,Negativa,O código de rastreio que me passaram dá como inexistente nos Correios.
+1016,Concluído,Negativa,"O botão de ligar afundou e não volta mais, acabamento muito frágil."
+1017,Cancelado,Positiva,"Cancelei por erro meu na cor, mas o estorno no cartão foi rápido."
+1018,Concluído,Negativa,Mandaram o tamanho errado. Pedi GG e enviaram M.
+1019,Concluído,Negativa,O atendente prometeu um desconto que não veio na fatura deste mês.
+1020,Concluído,Negativa,"A bateria não dura nem 2 horas, propaganda enganosa."
+1021,Concluído,Positiva,"Tudo perfeito, recomendo muito a loja."
+1022,Concluído,Negativa,O entregador mentiu no sistema dizendo que não tinha ninguém em casa.

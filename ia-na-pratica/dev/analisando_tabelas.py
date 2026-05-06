@@ -55,16 +55,36 @@ print("--- INICIANDO AUDITORIA DE CX COM IA ---\n")
 # 1. Carregue o 'feedbacks_clientes.csv'.
 # 2. Crie um novo DataFrame (ex: df_problemas) que contenha APENAS:
 #    Status == 'Concluído' E Avaliacao == 'Negativa'
+df_filtro = df_setup[df_setup['Status']=='Concluído']
+df_filtro = df_setup[(df_setup['Avaliacao']=='Negativa') & (df_setup['Status']=='Concluído')]
+for index, row in df_filtro.iterrows():
+    print(f"ID_Ticket: {row['ID_Ticket']} - Comentário: {row['Comentario']}")
 
-print(f"Encontrados {len(df_problemas)} problemas para analisar.")
+
 
 # ----------------------------------------------------------------
 # TODO 2: ANÁLISE COM IA (A Mágica)
 # ----------------------------------------------------------------
 # Crie uma lista vazia chamada 'categorias_ia'.
+categorias_ia = []
 # Faça um loop (for) para passar por cada texto da coluna 'Comentario'.
-# Peça à IA para classificar o texto numa destas categorias: [Logistica, Suporte, Produto].
+for comentario in df_filtro['Comentario']:
+    # Peça à IA para classificar o texto numa destas categorias: [Logistica, Suporte, Produto].
+    resposta = cliente_ia.chat.completions.create(
+        model="gpt-3.5-turbo", 
+        messages=[
+            {"role": "system", "content": "Classifique o comentario do cliente em apenas uma destas categorias: Logistica, Suporte, Produto. Responda apenas com o nome da categoria exato, sem ponto final."},
+            {"role": "user", "content": comentario} 
+        ],
+        temperature=0
+    )
+    
+    
+    categoria_escolhida = resposta.choices[0].message.content.strip()
+
 # Guarde a resposta da IA na lista 'categorias_ia'.
+categorias_ia.append(categoria_escolhida)
+print(f"classificado como: {categoria_escolhida} | {comentario}")
 
 # categorias_ia = []
 # for comentario in ... :
@@ -76,7 +96,14 @@ print(f"Encontrados {len(df_problemas)} problemas para analisar.")
 # ----------------------------------------------------------------
 # 1. Crie uma nova coluna no seu DataFrame filtrado chamada 'Categoria_Erro'
 #    e atribua a ela a lista 'categorias_ia' que acabou de gerar.
+df_problemas = df_filtro.copy()
+df_problemas['Categoria_Erro'] = categorias_ia
 # 2. Faça um groupby pela 'Categoria_Erro' e conte quantos problemas cada uma tem.
+relatorio = df_problemas['Categoria_Erro'].value_counts().reset_index()
+relatorio.columns = ['Departamento', 'Quantidade de Problemas']
+
+print("\n📊 Relatório de Problemas por Departamento:")
+print(relatorio)
 
 # df_problemas['Categoria_Erro'] = categorias_ia
 # relatorio = ...
